@@ -90,7 +90,7 @@ for eng_key in eng_dic:
     if not_match_count == diff_number:
         search_result_list.append(eng_key)
 
-if len(search_data_list) < 1:
+if len(search_result_list) < 1:
     print("검색된 결과가 없습니다.")
 
 else:
