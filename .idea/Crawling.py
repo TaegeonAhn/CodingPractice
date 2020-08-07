@@ -6,13 +6,13 @@ from bs4 import BeautifulSoup
 base_url = 'https://terms.naver.com/list.nhn?cid=43671&categoryId=43671&page={}'
 
 name_list=[]
-for index in range(1,200):
+for index in range(1,500):
 
     get_url = base_url.format(index)
     web_page = urlopen(get_url)
     source = BeautifulSoup(web_page, 'html.parser')
-    get_name = source.find_all('div', class_='subject')
-    # get_name = source.select('div.subject')
+    # get_name = source.find_all('div', class_='subject')
+    get_name = source.select('div.subject')
 
     for name in get_name:
 
@@ -27,5 +27,11 @@ for index in range(1,200):
             if '[' in name_split:
                 name_list.append(name_split)
 
-for line in name_list:
-    print(line)
+with open ('D:/MY개발/00.비식별화/B사/TEST/사전/인명사전22.txt','w', encoding = 'utf-8') as file_write:
+
+    for line in name_list:
+        file_write.write(line+'\n')
+
+file_write.close()
+
+
